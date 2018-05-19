@@ -1,7 +1,8 @@
-package com.stockadivsor.josephthomaschaske.stockadvisor
+package com.stockadivsor.josephthomaschaske.stockadvisor.Activities
 
 import android.app.Activity
 import android.os.Bundle
+import com.stockadivsor.josephthomaschaske.stockadvisor.R
 
 class MainActivity : Activity() {
 

@@ -3,10 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TickerSearch">
+    tools:context=".Fragments.TickerSearch">
 
     <EditText
+        android:id="@+id/tickerSearch"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:cursorVisible="false"
+        android:gravity="center"
+        android:hint="@string/ticker_search_hint"
+        android:maxLength="5"
+        android:textAllCaps="true"
+        android:inputType="textNoSuggestions"
+        android:textSize="50dp" />
 
 </FrameLayout>
