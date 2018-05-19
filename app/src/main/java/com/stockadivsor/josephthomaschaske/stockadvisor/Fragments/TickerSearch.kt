@@ -16,6 +16,7 @@ class TickerSearch : Fragment() {
 
         var fragment: View  = inflater.inflate(R.layout.fragment_ticker_search, container, false)
         var tickerSearch: EditText = fragment.findViewById(R.id.tickerSearch)
+        //
         return fragment
     }
 }
