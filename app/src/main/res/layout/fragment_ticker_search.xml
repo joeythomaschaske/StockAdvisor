@@ -5,17 +5,19 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.TickerSearch">
 
-    <EditText
-        android:id="@+id/tickerSearch"
+    <AutoCompleteTextView
+        android:id="@+id/symbolAutoComplete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:cursorVisible="false"
         android:gravity="center"
-        android:hint="@string/ticker_search_hint"
+        android:hint="GOOG"
         android:maxLength="5"
         android:textAllCaps="true"
         android:inputType="textNoSuggestions"
-        android:textSize="50dp" />
+        android:textSize="50dp"
+        android:completionThreshold="1"
+        />
 
 </FrameLayout>

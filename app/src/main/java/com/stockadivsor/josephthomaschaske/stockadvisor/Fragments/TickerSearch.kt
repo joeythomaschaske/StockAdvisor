@@ -7,6 +7,8 @@ import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import android.widget.EditText
 import com.android.volley.Request
 import com.android.volley.RequestQueue;
@@ -28,19 +30,26 @@ class TickerSearch : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        var fragment: View  = inflater.inflate(R.layout.fragment_ticker_search, container, false)
+        var fragment: View = inflater.inflate(R.layout.fragment_ticker_search, container, false)
         val queue = Volley.newRequestQueue(fragment.context)
         val stringRequest = StringRequest(Request.Method.GET, Constants.IEX_SYMBOLS_ENDPOINT,
-                Response.Listener<String> {
-                    response ->
-                        var type: Type = object : TypeToken<MutableList<IEXSymbols>>(){}.type
-                        var symbols: MutableList<IEXSymbols> = Gson().fromJson(response, type)
-                        println("")
+                Response.Listener<String> { response ->
+                    var type: Type = object : TypeToken<MutableList<IEXSymbols>>() {}.type
+                    var symbols: MutableList<IEXSymbols> = Gson().fromJson(response, type)
+                    var symbolsAdapter: ArrayAdapter<String> = ArrayAdapter(fragment.context, android.R.layout.simple_dropdown_item_1line, assembleSymbolsAdapter(symbols))
+                    var typeAhead: AutoCompleteTextView = fragment.findViewById(R.id.symbolAutoComplete)
+                    typeAhead.setAdapter(symbolsAdapter)
 
                 },
                 Response.ErrorListener { error -> println(error.message) }
         )
         queue.add(stringRequest)
         return fragment
+    }
+
+    fun assembleSymbolsAdapter(symbols: MutableList<IEXSymbols>): Array<String> {
+        return symbols.map {
+            it.symbol
+        }.filterNotNull().toTypedArray()
     }
 }
