@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.TickerSearch.TickerSearch">
+    tools:context=".Fragments.TickerFragment.TickerSearch">
 
     <AutoCompleteTextView
         android:id="@+id/symbolAutoComplete"
@@ -13,7 +13,6 @@
         android:cursorVisible="false"
         android:gravity="center"
         android:hint="GOOG"
-        android:maxLength="5"
         android:textAllCaps="true"
         android:inputType="textNoSuggestions"
         android:textSize="50dp"
